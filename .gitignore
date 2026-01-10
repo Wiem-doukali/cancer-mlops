@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+ENV/
+env/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Data & Models (gitignore les gros fichiers)
+data/raw/*.csv
+data/processed/*.npy
+data/processed/*.pkl
+models/*.pkl
+*.joblib
+
+# DVC (mais PAS .dvc files)
+.dvc/cache
+.dvc.lock
+
+# MLflow
+mlruns/
+.mlflow
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+.gitkeep
+
+# Tests
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ZenML
+.zen/

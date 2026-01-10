@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  # MLflow server pour experiment tracking
+  mlflow:
+    image: python:3.10-slim
+    container_name: cancer_mlflow
+    ports:
+      - "5000:5000"
+    volumes:
+      - mlflow_data:/mlflow
+      - ./mlruns:/app/mlruns
+    working_dir: /app
+    command: >
+      bash -c "pip install mlflow &&
+      mlflow ui --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:////mlflow/mlflow.db"
+    networks:
+      - cancer_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Training service
+  trainer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cancer_trainer
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./mlruns:/app/mlruns
+      - ./src:/app/src
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      mlflow:
+        condition: service_healthy
+    networks:
+      - cancer_network
+    command: python -u src/models/train.py
+    profiles:
+      - training
+
+  # API service pour inférence
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cancer_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./src:/app/src
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      mlflow:
+        condition: service_healthy
+    networks:
+      - cancer_network
+    command: python -u src/api/main.py
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  mlflow_data:
+
+networks:
+  cancer_network:
+    driver: bridge
