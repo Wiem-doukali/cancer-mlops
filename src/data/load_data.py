@@ -1,8 +1,5 @@
 """
 Chargement et préprocessing du dataset UCI Breast Cancer
-
-EXÉCUTION:
-    python src/data/load_data.py
 """
 
 import os
@@ -13,13 +10,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from pathlib import Path
 import logging
-import sys
 
-# Configuration logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
 logger = logging.getLogger(__name__)
 
 class DataLoader:

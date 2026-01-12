@@ -1,0 +1,23 @@
+{
+  "experiment": "optuna_optimization",
+  "randomforest": {
+    "best_trial": 3,
+    "best_f1_score": 0.9655172413793104,
+    "best_parameters": {
+      "n_estimators": 50,
+      "max_depth": 5,
+      "min_samples_split": 7,
+      "min_samples_leaf": 2
+    },
+    "n_trials": 8
+  },
+  "svm": {
+    "best_trial": 2,
+    "best_f1_score": 0.9861111111111112,
+    "best_parameters": {
+      "C": 22.254454706111453,
+      "kernel": "linear"
+    },
+    "n_trials": 8
+  }
+}
