@@ -1,0 +1,80 @@
+[
+  {
+    "version": "v1.0.0",
+    "timestamp": "2026-01-12T21:45:06.214608",
+    "model_path": "models\\model_v1.0.0.pkl",
+    "scaler_path": "models\\scaler_v1.0.0.pkl",
+    "model_type": "RandomForestClassifier",
+    "metadata": {
+      "type": "RandomForest",
+      "description": "Baseline model",
+      "n_estimators": 30,
+      "max_depth": 10
+    }
+  },
+  {
+    "version": "v2.0.0",
+    "timestamp": "2026-01-12T21:45:06.285972",
+    "model_path": "models\\model_v2.0.0.pkl",
+    "scaler_path": "models\\scaler_v2.0.0.pkl",
+    "model_type": "SVC",
+    "metadata": {
+      "type": "SVM",
+      "description": "Optimized model with C=10.0",
+      "kernel": "rbf",
+      "C": 10.0
+    }
+  },
+  {
+    "version": "v1.0.0",
+    "timestamp": "2026-01-13T04:36:57.908642",
+    "model_path": "models\\model_v1.0.0.pkl",
+    "scaler_path": "models\\scaler_v1.0.0.pkl",
+    "model_type": "RandomForestClassifier",
+    "metadata": {
+      "type": "RandomForest",
+      "description": "Baseline model",
+      "n_estimators": 30,
+      "max_depth": 10
+    }
+  },
+  {
+    "version": "v2.0.0",
+    "timestamp": "2026-01-13T04:36:58.019485",
+    "model_path": "models\\model_v2.0.0.pkl",
+    "scaler_path": "models\\scaler_v2.0.0.pkl",
+    "model_type": "SVC",
+    "metadata": {
+      "type": "SVM",
+      "description": "Optimized model with C=10.0",
+      "kernel": "rbf",
+      "C": 10.0
+    }
+  },
+  {
+    "version": "v1.0.0",
+    "timestamp": "2026-01-13T04:51:58.487025",
+    "model_path": "models\\model_v1.0.0.pkl",
+    "scaler_path": "models\\scaler_v1.0.0.pkl",
+    "model_type": "RandomForestClassifier",
+    "metadata": {
+      "type": "RandomForest",
+      "description": "Baseline model",
+      "n_estimators": 30,
+      "max_depth": 10
+    }
+  },
+  {
+    "version": "v2.0.0",
+    "timestamp": "2026-01-13T04:51:58.554098",
+    "model_path": "models\\model_v2.0.0.pkl",
+    "scaler_path": "models\\scaler_v2.0.0.pkl",
+    "model_type": "SVC",
+    "metadata": {
+      "type": "SVM",
+      "description": "Optimized model with C=10.0",
+      "kernel": "rbf",
+      "C": 10.0
+    }
+  }
+]

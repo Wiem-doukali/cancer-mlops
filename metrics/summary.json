@@ -1,0 +1,96 @@
+{
+  "experiment": "cancer_variations",
+  "num_runs": 6,
+  "runs": [
+    {
+      "run_name": "rf_baseline",
+      "params": {
+        "model": "RandomForest",
+        "n_estimators": 30,
+        "max_depth": 10
+      },
+      "metrics": {
+        "accuracy": 0.9473684210526315,
+        "precision": 0.9583333333333334,
+        "recall": 0.9583333333333334,
+        "f1": 0.9583333333333334,
+        "auc": 0.9943783068783069
+      }
+    },
+    {
+      "run_name": "svm_baseline",
+      "params": {
+        "model": "SVM",
+        "kernel": "rbf",
+        "C": 1.0
+      },
+      "metrics": {
+        "accuracy": 0.9824561403508771,
+        "precision": 0.9861111111111112,
+        "recall": 0.9861111111111112,
+        "f1": 0.9861111111111112,
+        "auc": 0.9950396825396826
+      }
+    },
+    {
+      "run_name": "rf_var1_more_trees",
+      "params": {
+        "model": "RandomForest",
+        "n_estimators": 100,
+        "max_depth": 15
+      },
+      "metrics": {
+        "accuracy": 0.956140350877193,
+        "precision": 0.958904109589041,
+        "recall": 0.9722222222222222,
+        "f1": 0.9655172413793104,
+        "auc": 0.9938822751322751
+      }
+    },
+    {
+      "run_name": "rf_var2_deeper",
+      "params": {
+        "model": "RandomForest",
+        "n_estimators": 50,
+        "max_depth": 20
+      },
+      "metrics": {
+        "accuracy": 0.956140350877193,
+        "precision": 0.958904109589041,
+        "recall": 0.9722222222222222,
+        "f1": 0.9655172413793104,
+        "auc": 0.9918981481481481
+      }
+    },
+    {
+      "run_name": "svm_var1_linear",
+      "params": {
+        "model": "SVM",
+        "kernel": "linear",
+        "C": 1.0
+      },
+      "metrics": {
+        "accuracy": 0.9736842105263158,
+        "precision": 0.9859154929577465,
+        "recall": 0.9722222222222222,
+        "f1": 0.9790209790209791,
+        "auc": 0.9963624338624338
+      }
+    },
+    {
+      "run_name": "svm_var2_high_C",
+      "params": {
+        "model": "SVM",
+        "kernel": "rbf",
+        "C": 10.0
+      },
+      "metrics": {
+        "accuracy": 0.9736842105263158,
+        "precision": 0.9859154929577465,
+        "recall": 0.9722222222222222,
+        "f1": 0.9790209790209791,
+        "auc": 0.9957010582010581
+      }
+    }
+  ]
+}

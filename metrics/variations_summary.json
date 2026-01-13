@@ -1,0 +1,70 @@
+{
+  "experiment": "cancer_baseline",
+  "num_variations": 4,
+  "runs": [
+    {
+      "run_name": "var1_rf_more_trees",
+      "params": {
+        "model": "RandomForest",
+        "n_estimators": 100,
+        "max_depth": 15,
+        "min_samples_split": 5,
+        "min_samples_leaf": 2
+      },
+      "metrics": {
+        "accuracy": 0.956140350877193,
+        "precision": 0.958904109589041,
+        "recall": 0.9722222222222222,
+        "f1": 0.9655172413793104,
+        "auc": 0.9933862433862434
+      }
+    },
+    {
+      "run_name": "var2_rf_deeper",
+      "params": {
+        "model": "RandomForest",
+        "n_estimators": 50,
+        "max_depth": 20,
+        "min_samples_split": 3,
+        "min_samples_leaf": 1
+      },
+      "metrics": {
+        "accuracy": 0.9473684210526315,
+        "precision": 0.9583333333333334,
+        "recall": 0.9583333333333334,
+        "f1": 0.9583333333333334,
+        "auc": 0.9935515873015872
+      }
+    },
+    {
+      "run_name": "var3_svm_linear",
+      "params": {
+        "model": "SVM",
+        "kernel": "linear",
+        "C": 1.0
+      },
+      "metrics": {
+        "accuracy": 0.9736842105263158,
+        "precision": 0.9859154929577465,
+        "recall": 0.9722222222222222,
+        "f1": 0.9790209790209791,
+        "auc": 0.9963624338624338
+      }
+    },
+    {
+      "run_name": "var4_svm_high_c",
+      "params": {
+        "model": "SVM",
+        "kernel": "rbf",
+        "C": 10.0
+      },
+      "metrics": {
+        "accuracy": 0.9736842105263158,
+        "precision": 0.9859154929577465,
+        "recall": 0.9722222222222222,
+        "f1": 0.9790209790209791,
+        "auc": 0.9957010582010581
+      }
+    }
+  ]
+}

@@ -117,24 +117,6 @@ Métrique : **Accuracy, Precision, Recall, F1**
 | Docker | Conteneurisation |
 | GitLab CI | CI/CD |
 
-## Commandes essentielles
-
-```bash
-# DVC
-dvc push                    # Push data
-dvc pull                    # Pull data
-
-# MLflow
-mlflow ui                   # Dashboard
-mlflow runs list            # Lister les runs
-
-# Tests
-pytest tests/               # Lancer tests
-
-# Format code
-black src/
-flake8 src/
-```
 
 ## Déploiement
 
