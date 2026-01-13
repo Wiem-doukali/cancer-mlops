@@ -99,9 +99,6 @@ Métrique : **Accuracy, Precision, Recall, F1**
 
 Voir section "Déploiement" ci-dessous pour v1 → v2 + rollback.
 
-## Documentation supplémentaire
-
-Consulter les fichiers dans `configs/` et notebooks.
 
 ---
 
