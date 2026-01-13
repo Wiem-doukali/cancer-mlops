@@ -1,111 +1,109 @@
-MLOps Mini-Projet : Cancer du Sein (UCI Breast Cancer)
-Objectifs
+# MLOps Mini-Projet : Cancer du Sein (UCI Breast Cancer)
 
-Ce projet démontre un workflow MLOps complet :
+## Objectifs
 
-Classification binaire : malin vs bénin
+Ce projet démontre un **workflow MLOps complet** :
+- Classification binaire : malin vs bénin
+- Baseline : RandomForest + SVM
+- Versioning (Git + DVC)
+- Tracking (MLflow)
+- Pipeline (ZenML)
+- Optimisation (Optuna)
+- API d'inférence + déploiement
+- CI/CD (Github CI)
 
-Baseline : RandomForest + SVM
+## Démarrage 
 
-Versioning (Git + DVC)
+### 1. Cloner et installer
 
-Tracking (MLflow)
-
-Pipeline (ZenML)
-
-Optimisation (Optuna)
-
-API d'inférence + déploiement
-
-CI/CD (GitHub Actions)
-
-Structure du projet
-cancer-mlops/
-├── data/
-│   ├── raw/              # Données brutes (DVC tracked)
-│   └── processed/        # Données traitées
-├── src/
-│   ├── data/             # Chargement & préprocessing
-│   ├── models/           # Entraînement & inférence
-│   ├── utils/            # Utilitaires
-│   └── api/              # FastAPI pour serving
-├── configs/              # YAML : paramètres, hyperparamètres
-├── notebooks/            # Exploration EDA
-├── mlruns/               # MLflow artifacts
-├── .dvc/                 # DVC config
-├── Dockerfile
-├── docker-compose.yml
-├── requirements.txt
-├── .github/workflows/    # CI/CD GitHub Actions
-└── README.md
-
-Démarrage rapide
-1. Cloner et installer
+```bash
 git clone <repo-url>
 cd cancer-mlops
 python -m venv venv
-# Windows
-venv\Scripts\activate
-# Linux / macOS
-source venv/bin/activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
+```
 
-2. Initialiser DVC
+### 2. Initialiser DVC
+
+```bash
 dvc init
 dvc remote add -d myremote s3://my-bucket/dvc-store  # ou autre remote
+```
 
-3. Baseline training
+### 3. Baseline training
+
+```bash
 python src/models/train.py --config configs/baseline.yaml
+```
 
-4. Lancer MLflow UI
+### 4. Lancer MLflow UI
+
+```bash
 mlflow ui --host 0.0.0.0 --port 5000
+```
 
-5. Pipeline ZenML
+### 5. Pipeline ZenML
+
+```bash
 python src/pipeline/run_pipeline.py
+```
 
-6. Optimisation Optuna
+### 6. Optimisation Optuna
+
+```bash
 python src/optimization/optimize.py --n-trials 10
+```
 
-7. API d'inférence
+### 7. API d'inférence
+
+```bash
 python src/api/main.py
 # Accès : http://localhost:8000/docs
+```
 
-8. Docker Compose
+### 8. Docker Compose
+
+```bash
 docker-compose up -d
+```
 
-Dataset
+## Dataset
 
-UCI Breast Cancer (Diagnostic) : 569 samples, 30 features
+**UCI Breast Cancer (Diagnostic)** : 569 samples, 30 features
+- Bénin : 357 (63%)
+- Malin : 212 (37%)
 
-Bénin : 357 (63%)
+## Baseline
 
-Malin : 212 (37%)
+- **RandomForest** : 30 estimators
+- **SVM** : kernel='rbf'
 
-Baseline
+Métrique : **Accuracy, Precision, Recall, F1**
 
-RandomForest : 30 estimators
+## Outils utilisés
 
-SVM : kernel='rbf'
+| Outil | Usage |
+|-------|-------|
+| Git/GitLab | Version control |
+| DVC | Data versioning |
+| MLflow | Experiment tracking |
+| ZenML | Pipeline orchestration |
+| Optuna | Hyperparameter optimization |
+| FastAPI | API d'inférence |
+| Docker | Conteneurisation |
+| Github CI | CI/CD |
 
-Métriques : Accuracy, Precision, Recall, F1
 
-Outils utilisés
-Outil	Usage
-Git / GitHub	Version control
-DVC	Data versioning
-MLflow	Experiment tracking
-ZenML	Pipeline orchestration
-Optuna	Hyperparameter optimization
-FastAPI	API d'inférence
-Docker	Conteneurisation
-GitHub Actions	CI/CD
-Déploiement
+## Déploiement
 
 Voir section "Déploiement" ci-dessous pour v1 → v2 + rollback.
 
-Documentation supplémentaire
+## Documentation supplémentaire
 
-Consulter les fichiers dans configs/ et les notebooks pour détails.
+Consulter les fichiers dans `configs/` et notebooks.
 
-Auteur : Wiam Doukali
-Date : 2026
+---
+
+**Auteur** : Wiem Doukali 
+**Date** : 13/01/2026
