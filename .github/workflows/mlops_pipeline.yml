@@ -9,9 +9,6 @@ on:
 jobs:
   mlops-deploy:
     runs-on: ubuntu-latest
-    env:
-      DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-      DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
     steps:
       # 1️⃣ Checkout repo
@@ -29,7 +26,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install mlflow zenml docker pandas scikit-learn
+          pip install mlflow zenml pandas scikit-learn
 
       # 4️⃣ Prepare directories for MLflow & ZenML
       - name: Setup directories
@@ -45,35 +42,13 @@ jobs:
 
       # 6️⃣ Upload MLflow & ZenML results as GitHub artifacts
       - name: Upload MLflow results
-        uses: actions/upload-artifact@v4   # ✅ mis à jour v4
+        uses: actions/upload-artifact@v4
         with:
           name: mlflow-logs
           path: mlruns/
 
       - name: Upload ZenML artifacts
-        uses: actions/upload-artifact@v4   # ✅ mis à jour v4
+        uses: actions/upload-artifact@v4
         with:
           name: zenml-artifacts
           path: zenml_artifacts/
-
-      # 7️⃣ Login to Docker Hub
-      - name: Login to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-
-      # 8️⃣ Build Docker image
-      - name: Build Docker image
-        run: |
-          docker build -t cancer-mlops:latest .
-
-      # 9️⃣ Tag Docker image for Docker Hub
-      - name: Tag Docker image
-        run: |
-          docker tag cancer-mlops:latest $DOCKER_HUB_USERNAME/cancer-mlops:latest
-
-      # 🔟 Push Docker image
-      - name: Push Docker image
-        run: |
-          docker push $DOCKER_HUB_USERNAME/cancer-mlops:latest
